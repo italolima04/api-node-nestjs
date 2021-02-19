@@ -13,7 +13,7 @@ export class UsersService {
   ) {}
 
   async createAdminUser(createUserDto: CreateUserDto): Promise<User> {
-    if (createUserDto.password !== createUserDto.passwordConfirmation) {
+    if (createUserDto.password != createUserDto.passwordConfirmation) {
       throw new UnprocessableEntityException('Senhas incompatíveis');
     } else {
       return this.userRepository.createUser(createUserDto, UserRole.ADMIN);
